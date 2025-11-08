@@ -1,0 +1,13 @@
+Timestamp,Well_ID,Operation_Status,ROP_m_h,WOB_ton,Torque_kNm,Oil_Flow_bpd,Gas_Flow_mcfd,Pump_Frequency_Hz,Downtime_Code,Comments
+01:00:00,TP-123H,Produciendo,0,0,0,1200,850,55,0,"Operacion normal"
+02:00:00,TP-123H,Produciendo,0,0,0,1205,852,55,0,"Todo estable"
+03:00:00,TP-123H,Produciendo,0,0,0,1198,849,55,0,"Fluctuacion menor"
+04:00:00,TP-123H,Inactivo,0,0,0,0,0,0,101,"Parada programada para mantenimiento de bomba"
+05:00:00,TP-123H,Inactivo,0,0,0,0,0,0,101,"Mantenimiento en progreso"
+06:00:00,TP-123H,Produciendo,0,0,0,1210,855,55.5,0,"Reinicio de produccion post-mantenimiento"
+07:00:00,TP-456V,Perforando,15.2,12,35,0,0,0,0,"Inicio de perforacion tramo intermedio"
+08:00:00,TP-456V,Perforando,14.9,12.1,35.5,0,0,0,0,"Parametros estables"
+09:00:00,TP-456V,Perforando,15.5,12,38,0,0,0,0,"Aumento de torque detectado, posible cambio de formacion"
+10:00:00,TP-456V,Perforando,10.1,12.5,42,0,0,0,0,"Formacion mas dura, ROP disminuye, torque aumenta"
+11:00:00,TP-456V,Perforando,9.8,12.5,42.5,0,0,0,0,"Vibracion leve reportada por MWD"
+12:00:00,TP-456V,Inactivo,0,0,0,0,0,0,205,"Falla inesperada en top drive. Equipo de mantenimiento notificado."

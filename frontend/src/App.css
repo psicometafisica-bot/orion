@@ -1,0 +1,37 @@
+/* --- Estilos para Componentes (restaurados) --- */
+.upload-section, .response-container, .controls-container, .chart-container, .tab-content {
+  background-color: var(--surface-blue); 
+  border: 1px solid var(--border-blue);
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.button-primary, .button, .report-button, .upload-button {
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  padding: 12px 24px;
+  transition: all 0.2s;
+}
+.button-primary { background-color: var(--primary-orange); color: var(--background-blue-dark); font-weight: bold; }
+.button-primary:disabled { background-color: var(--border-blue); color: var(--text-muted); }
+.report-button { background-color: transparent; color: var(--secondary-blue-accent); border: 1px solid var(--secondary-blue-accent); }
+.report-button:hover { background-color: var(--secondary-blue-accent); color: white; }
+.button, .upload-button { background-color: var(--hover-surface); color: var(--text-light); border: 1px solid var(--border-blue); }
+.button:hover, .upload-button:hover { border-color: var(--primary-orange); color: var(--primary-orange); }
+.file-name { margin-left: 15px; color: var(--text-muted); font-size: 0.9rem; }
+.specialist-panel { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-blue); }
+.specialist-panel h4 { text-align: center; color: var(--text-muted); font-size: 1.2rem; margin-bottom: 20px; }
+.button-group { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+.controls-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+.slider-group { background-color: var(--surface-dark); padding: 20px; border-radius: 8px; }
+.slider-group label { display: block; margin-bottom: 15px; font-weight: bold; }
+.slider-group input[type="range"] { width: 100%; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 30px; margin-bottom: 40px; }
+.kpi-card { background-color: var(--background-blue-dark); padding: 25px 20px; border-radius: 10px; border: 1px solid var(--border-blue); text-align: center; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.kpi-title { display: block; color: var(--text-muted); font-size: 1rem; margin-bottom: 12px; }
+.kpi-value { display: inline-block; color: var(--primary-orange); font-size: 2.8rem; font-weight: bold; line-height: 1; margin-right: 8px; }
+.kpi-unit { display: inline-block; color: var(--text-muted); font-size: 1.1rem; font-weight: 500; }

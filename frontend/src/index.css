@@ -1,0 +1,297 @@
+:root {
+  /* Tu paleta de colores personalizada */
+  --background-blue-dark: #0a1149; 
+  --surface-blue: #0b0431;        
+  --sidebar-blue: #061631;         
+  --border-blue: #30363d;         
+  --text-light: #e6edf3;          
+  --text-muted: #8b949e;          
+  --primary-orange: #f77829;      
+  --secondary-blue-accent: #58a6ff; 
+  --hover-surface: #21262d;      
+  --chart-background-light: #e0e0e0; 
+  --chart-text-dark: #333;
+  --accent-green: #28a745;
+  --accent-red: #dc3545;         
+}
+
+/* --- Reseteo y configuración global --- */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-blue-dark);
+  color: var(--text-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-light);
+  margin-top: 0;
+}
+p { line-height: 1.6; }
+
+/* --- LAYOUT PRINCIPAL --- */
+.app-container {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  width: 280px;
+  background-color: var(--sidebar-blue); 
+  border-right: 1px solid var(--border-blue);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0; 
+}
+.sidebar h1 { font-size: 1.8rem; color: var(--primary-orange); margin-bottom: 50px; text-align: center; }
+.sidebar nav ul { list-style: none; padding: 0; margin: 0; }
+.sidebar nav li a { display: flex; align-items: center; color: var(--text-light); text-decoration: none; padding: 15px 20px; border-radius: 8px; margin-bottom: 10px; font-weight: 500; transition: background-color 0.2s, color 0.2s; }
+.sidebar nav li a:hover { background-color: var(--hover-surface); color: var(--primary-orange); }
+.sidebar nav li a.active { background-color: var(--primary-orange); color: var(--sidebar-blue); font-weight: bold; }
+.sidebar-action { margin-top: auto; padding-top: 30px; border-top: 1px solid var(--border-blue); }
+.sidebar-action .button { width: 100%; border-radius: 6px; font-weight: 500; font-size: 0.95rem; cursor: pointer; border:none; padding: 12px 24px; }
+
+
+.main-content {
+  flex-grow: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+/* --- ESTILOS DE COMPONENTES (INTEGRADOS AQUÍ) --- */
+
+.upload-section, .response-container, .controls-container, .chart-container, .tab-content {
+  background-color: var(--surface-blue); 
+  border: 1px solid var(--border-blue);
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Estilos para Botones --- */
+.button, .button-primary, .report-button, .upload-button {
+  cursor: pointer;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+.button-primary { background-color: var(--primary-orange); color: var(--background-blue-dark); font-weight: bold; }
+.button-primary:hover { filter: brightness(1.1); }
+.button-primary:disabled { background-color: var(--border-blue); color: var(--text-muted); cursor: not-allowed; }
+
+.report-button { background-color: transparent; color: var(--secondary-blue-accent); border: 1px solid var(--secondary-blue-accent); }
+.report-button:hover { background-color: var(--secondary-blue-accent); color: white; }
+.report-button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.button, .upload-button { background-color: var(--hover-surface); color: var(--text-light); border: 1px solid var(--border-blue); }
+.button:hover, .upload-button:hover { border-color: var(--primary-orange); color: var(--primary-orange); }
+
+.file-name { margin-left: 15px; color: var(--text-muted); font-size: 0.9rem; }
+.specialist-panel { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-blue); }
+.specialist-panel h4 { text-align: center; color: var(--text-muted); font-size: 1.2rem; margin-bottom: 20px; }
+.button-group { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+
+.controls-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+.slider-group { background-color: var(--surface-blue); padding: 20px; border-radius: 8px; border: 1px solid var(--border-blue); }
+.slider-group label { display: block; margin-bottom: 15px; font-weight: bold; }
+.slider-group input[type="range"] { width: 100%; }
+
+.tab-bar { display: flex; border-bottom: 1px solid var(--border-blue); margin-bottom: 0; flex-wrap: wrap; }
+.tab-button { padding: 15px 25px; cursor: pointer; background-color: transparent; border: none; color: var(--text-muted); font-size: 1rem; font-weight: 500; border-bottom: 3px solid transparent; transition: all 0.2s; }
+.tab-button:hover { color: var(--text-light); }
+.tab-button.active { color: var(--primary-orange); border-bottom-color: var(--primary-orange); }
+.tab-button:disabled { color: #444; cursor: not-allowed; }
+.tab-content { border-top: none; border-top-left-radius: 0; border-top-right-radius: 0; margin-top: 0; }
+
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 30px; margin-bottom: 40px; }
+.kpi-card { background-color: var(--background-blue-dark); padding: 25px 20px; border-radius: 10px; border: 1px solid var(--border-blue); text-align: center; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.kpi-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); }
+.kpi-title { display: block; color: var(--text-muted); font-size: 1rem; margin-bottom: 12px; }
+.kpi-value { display: inline-block; color: var(--primary-orange); font-size: 2.8rem; font-weight: bold; line-height: 1; margin-right: 8px; }
+.kpi-unit { display: inline-block; color: var(--text-muted); font-size: 1.1rem; font-weight: 500; }
+
+.chart-container { margin-top: 40px; padding: 25px; background-color: var(--chart-background-light); border-radius: 12px; border: 1px solid var(--border-blue); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
+.charts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; margin-bottom: 40px; }
+.chart-card { background-color: var(--surface-blue); border: 1px solid var(--border-blue); padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
+@media (max-width: 992px) { .charts-grid { grid-template-columns: 1fr; } }
+
+
+/* --- ESTILOS PARA INTERPRETAR MARKDOWN DE LA IA --- */
+/* (Reglas generales para p, ul, ol, li, strong, em se mantienen) */
+.response-container h1, .response-container h2, .response-container h3, .response-container h4 {
+  color: var(--primary-orange);
+  border-bottom: 1px solid var(--border-blue);
+  padding-bottom: 8px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.response-container p, .tab-content p {
+  color: var(--text-light);
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.response-container ul, .response-container ol {
+  padding-left: 25px;
+  margin-bottom: 15px;
+}
+
+.response-container li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.response-container strong, .response-container b {
+  color: var(--primary-orange);
+  font-weight: 600;
+}
+
+.response-container em, .response-container i {
+  color: var(--secondary-blue-accent);
+  font-style: italic;
+}
+
+/* --- BLOQUE DE ESTILOS GENÉRICO PARA TABLAS ELIMINADO --- */
+
+
+/* --- NUEVOS ESTILOS PARA PANEL FANES --- */
+.popup-notification { position: fixed; top: 20px; right: 20px; background-color: var(--accent-green); color: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); z-index: 1000; font-weight: bold; animation: fadeInDown 0.5s ease-out forwards; }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.simulations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.simulation-card { background-color: var(--background-blue-dark); border: 1px solid var(--border-blue); padding: 25px; border-radius: 12px; display: flex; flex-direction: column; }
+.simulation-card h5 { color: var(--primary-orange); font-size: 1.3rem; margin-bottom: 15px; }
+.simulation-card p { color: var(--text-muted); flex-grow: 1; margin-bottom: 20px; }
+.notice { background-color: var(--surface-blue); border: 1px solid var(--primary-orange); color: var(--primary-orange); padding: 20px; border-radius: 8px; margin-top: 30px; text-align: center; font-weight: 500; }
+.selected-sim-info { background-color: var(--hover-surface); padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--primary-orange); }
+.score-container { text-align: center; margin: 40px 0; }
+.score-title { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 10px; }
+.score-value { color: var(--primary-orange); font-size: 6rem; font-weight: bold; line-height: 1; }
+.score-value span { font-size: 2rem; margin-left: 5px; }
+
+
+/* --- BLOQUE DE ESTILOS EXCLUSIVO PARA LA TABLA DE KPIs (AL FINAL) --- */
+.kpi-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  background-color: transparent; /* Fondo transparente */
+}
+
+.kpi-table-container th,
+.kpi-table-container td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-blue); /* Líneas horizontales */
+  color: var(--text-light); /* Asegura texto claro */
+}
+
+.kpi-table-container th {
+  background-color: var(--hover-surface); /* Fondo oscuro sutil */
+  color: var(--primary-orange); /* Texto naranja */
+  font-weight: 600;
+  font-size: 1rem;
+  border-top: 1px solid var(--border-blue); /* Borde superior para el encabezado */
+}
+
+.kpi-table-container tr:last-child td {
+  border-bottom: none; /* Sin borde en la última fila */
+}
+/* --- FIN DEL BLOQUE EXCLUSIVO KPI --- */
+
+
+/* --- NUEVOS ESTILOS PARA EL DASHBOARD GENERAL --- */
+.dashboard-section { margin-top: 50px; background-color: var(--surface-blue); border: 1px solid var(--border-blue); padding: 30px; border-radius: 12px; }
+.dashboard-section-title { color: var(--primary-orange); margin-bottom: 30px; font-size: 1.5rem; border-bottom: 1px solid var(--border-blue); padding-bottom: 15px; }
+.dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.kpi-grid-dashboard { display: flex; flex-direction: column; gap: 30px; }
+.score-container-dashboard { background-color: var(--background-blue-dark); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+.placeholder-message { text-align: center; padding: 40px; color: var(--text-muted); }
+.placeholder-message span { display: block; margin-top: 10px; font-size: 0.9rem; }
+@media (max-width: 1200px) { .dashboard-grid { grid-template-columns: 1fr; } }
+
+/* --- ESTILOS PARA EXPLICACIÓN DE MÓDULO --- */
+.module-explanation { background-color: var(--background-blue-dark); border-left: 4px solid var(--primary-orange); padding: 20px; margin-bottom: 30px; border-radius: 8px; }
+.module-explanation p { color: var(--text-muted); margin: 0 0 10px 0; }
+.module-explanation p:last-child { margin-bottom: 0; }
+.module-explanation strong { color: var(--text-light); }
+
+/* --- NUEVOS ESTILOS PARA MÓDULO SIP --- */
+.sip-input-section { background-color: var(--surface-blue); border: 1px solid var(--border-blue); padding: 30px; border-radius: 12px; margin-bottom: 30px; }
+.sip-input-section label { display: block; margin-bottom: 10px; font-weight: 500; color: var(--text-muted); }
+.sip-input-section textarea { width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--border-blue); background-color: var(--background-blue-dark); color: var(--text-light); font-family: inherit; font-size: 1rem; margin-bottom: 20px; resize: vertical; }
+.sip-results-section { margin-top: 40px; }
+.sip-results-section h3 { color: var(--primary-orange); margin-bottom: 25px; border-bottom: 1px solid var(--border-blue); padding-bottom: 10px; }
+.substitutes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+.substitute-card { background-color: var(--surface-blue); border: 1px solid var(--border-blue); padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); display: flex; flex-direction: column; }
+.substitute-card h5 { color: var(--text-light); font-size: 1.1rem; margin-bottom: 15px; }
+.substitute-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px; }
+.substitute-card p strong { color: var(--text-light); font-weight: 600; }
+.analysis-section { margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-blue); }
+.analysis-section h6 { color: var(--secondary-blue-accent); font-size: 1rem; margin-bottom: 10px; }
+.analysis-section p { font-size: 0.9rem; }
+.analysis-section strong { color: var(--primary-orange); }
+.confidence-score { margin-top: auto; padding-top: 15px; text-align: right; font-size: 0.9rem; color: var(--text-muted); }
+.confidence-score span { font-weight: bold; font-size: 1.2rem; color: var(--primary-orange); margin-left: 5px; }
+.sip-stock-alert-section { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-blue); }
+.sip-stock-alert-section h3 { color: var(--primary-orange); margin-bottom: 15px; }
+.sip-stock-alert-section button { margin-top: 10px; }
+
+
+/* --- BLOQUE DE ESTILOS EXCLUSIVO PARA LA TABLA DE ALERTAS DE STOCK --- */
+.stock-alert-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  background-color: transparent; /* Fondo transparente */
+}
+
+.stock-alert-table-container th,
+.stock-alert-table-container td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-blue); /* Líneas horizontales */
+  color: var(--text-light); /* Asegura texto claro */
+}
+
+.stock-alert-table-container th {
+  background-color: var(--hover-surface); /* Fondo oscuro sutil */
+  color: var(--primary-orange); /* Texto naranja */
+  font-weight: 600;
+  font-size: 1rem;
+  border-top: 1px solid var(--border-blue); /* Borde superior para el encabezado */
+}
+
+.stock-alert-table-container tr:last-child td {
+  border-bottom: none; /* Sin borde en la última fila */
+}
+
+/* Opcional: Estilos para colorear alertas (si decides usarlos) */
+.stock-alert-table-container td.alert-quiebre { 
+  font-weight: bold;
+  color: var(--accent-red); 
+}
+.stock-alert-table-container td.alert-obsolescencia { 
+  font-weight: bold;
+  color: #ffc107; /* Amarillo/Naranja para advertencia */
+}
+/* --- FIN DEL BLOQUE EXCLUSIVO --- */
